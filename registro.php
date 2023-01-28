@@ -1,6 +1,11 @@
 <?php
 include("conexion.php");
 
+if (isset($_SESSION['email'])) {
+    header('Location:profile.php');
+}
+
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1'); 
 
@@ -10,7 +15,7 @@ if(isset($_POST["registrar"])){
     $phone = mysqli_real_escape_string($conexion,$_POST["phone"]);
     $email = mysqli_real_escape_string($conexion, $_POST["email"]);
     $password = mysqli_real_escape_string($conexion,$_POST["password"]);
-    $pass_encryp = sha1($password);
+    // $pass_encryp = sha1($password);
 
     $sql = "SELECT id FROM user WHERE email='$email'";
     $result = $conexion -> query($sql);
@@ -80,10 +85,10 @@ if(isset($_POST["registrar"])){
 						<label></label>
 						<input type="password" required class="form-control" name="password" placeholder="Password">
 					</div>
-					<div class="form-group mb-3">
+					<!-- <div class="form-group mb-3">
 						<label></label>
 						<input type="password" required class="form-control" name="passwordr" placeholder="Repetir Password">
-					</div>
+					</div> -->
 
 					<p class="mt-3 text-center">Adready a member? <span class="text-primary"> <a class="text-decoration-none" href="index.php">Login</a>  </span></p>
 					<!-- <div class="form-group">

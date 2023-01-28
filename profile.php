@@ -1,3 +1,13 @@
+<?php
+include "conexion.php";
+
+error_reporting(E_ALL);
+ini_set('display_errors', '1'); 
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,35 +15,102 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Registro</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="./styles.css">
+	<title>Profile</title>
 </head>
 
 <body>
 
-    
+    <?php include 'navbar.php' ?>
 
-    <?php include 'modificar.php' ?>
-	<!-- <div class="container">
-		<div class="row vh-100 justify-content-center align-items-center mt-5">
+	<?php
+		$query = "SELECT * FROM user";
+		$resultado = $conexion->query($query);
+		$datos = $resultado->fetch_assoc();
 
-			<div class="card p-5" style="width: 28rem;">
-				<form action="guardar.php" method="POST" enctype="multipart/form-data">
 
-					<div class="form-group mb-3">
-						<label></label>
-						<input type="text" required class="form-control" name="name" placeholder="Nombre">
+	?>
+
+	<div class="h-100 d-flex align-items-center justify-content-center mt-5">
+		<div class="container d-flex flex-column align-items-center gap-5">
+			<div class="head_card d-flex flex-column align-items-center gap-2">
+				<h1>Personal info</h1>
+				<!-- <h3>Basic info, like your name and photo</h3> -->
+			</div>
+			<div class="info__container border border-2 rounded-3 ">
+				<div class="row p-2">
+					<div class="title__user col ps-4">
+						<h2>Profile</h2>
+						<p>Some info may be visible to other people</p>
 					</div>
-
-					<div class="form-group">
-						<label></label>
-						<input type="file" required class="form-control" name="imagen">
+					<div class="button__container col d-flex justify-content-around align-content-center flex-wrap">
+						<button class="btn border border-2 px-4">Edit</button>
 					</div>
-
-					<input class="btn btn-primary" value="Aceptar" type="submit" />
-				</form>
+				</div>
+				<hr />
+				<div class="row p-2">
+					<div class="col-4 ps-4 d-flex align-items-center">
+						<span class="text-uppercase">photo</span>
+					</div>
+					<div class="col offset-1 text-end text-sm-start">
+						<img style="height: 80px" src="<?php if ($datos['imagen'] == "") {
+															echo '';
+														} else { ?>
+								<img height=" 80" src="data:image/jpg;base64, <?php echo base64_encode(($datos['imagen'])) ?>" />
+						<?php
+														} ?>"; />
+					</div>
+				</div>
+				<hr />
+				<div class="row p-2">
+					<div class="col-4 ps-4 d-flex align-items-center">
+						<span class="fs">name</span>
+					</div>
+					<div class="col offset-1 text-end text-sm-start">
+						<span><?php echo $datos["name"]; ?></span>
+					</div>
+				</div>
+				<hr />
+				<div class="row p-2">
+					<div class="col-4 ps-4 d-flex align-items-center">
+						<span class="text-uppercase">bio</span>
+					</div>
+					<div class="col offset-1 text-end text-sm-start">
+						<span><?php echo $datos["bio"]; ?></span>
+					</div>
+				</div>
+				<hr />
+				<div class="row p-2">
+					<div class="col-4 ps-4 d-flex align-items-center">
+						<span class="text-uppercase">phone</span>
+					</div>
+					<div class="col offset-1 text-end text-sm-start">
+						<span><?php echo $datos["phone"]; ?></span>
+					</div>
+				</div>
+				<hr />
+				<div class="row p-2">
+					<div class="col-4 ps-4 d-flex align-items-center">
+						<span class="text-uppercase">email</span>
+					</div>
+					<div class="col offset-1 text-end text-sm-start">
+						<span><?php echo $datos["email"]; ?></span>
+					</div>
+				</div>
+				<hr />
+				<div class="row p-2">
+					<div class="col-4 ps-4 d-flex align-items-center">
+						<span class="text-uppercase">password</span>
+					</div>
+					<div class="col offset-1 text-end text-sm-start">
+						<span><input class="border-0" type="password" value="<?php echo $datos["password"]; ?>" /> </span>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 </body>
 
 </html>

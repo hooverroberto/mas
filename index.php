@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -17,14 +18,18 @@
                 <img class="mb-2 img" src="images/devchallenges.svg" alt="" style="width: 10rem;">
                 <h4 >Join thousands of learners from around the world</h4>
                 <p class="text">Master web development by making real-life projects. There are multiple paths for you to choose</p>              
+                <?php
+                include "conexion.php";
+                include "./controller_index.php";
+                ?>
                 <form action="#" method="POST" enctype="multipart/form-data">
                     <div class=" mt-3 mb-2">                    
-                        <input type="email" class="form-control" placeholder="name@example.com">
+                        <input type="email" class="form-control" placeholder="name@example.com" name="email">
                     </div>
                     <div class=" mt-3 mb-2">                   
-                        <input type="password" class="form-control" placeholder="password">
+                        <input type="password" class="form-control" placeholder="password" name="password">
                     </div>                                
-                    <input type="submit" class="form-control btn btn-primary mt-2" value="Login" />
+                    <input type="submit" class="form-control btn btn-primary mt-2" value="Login" name="ingresar" />
                 </form>
                 <p class="text-center mt-3">or continue with these social profile</p>
                 <div class="d-flex justify-content-center gap-4">

@@ -1,13 +1,13 @@
 <?php
 
-session_start();
+
 
 $conexion = new mysqli("localhost", "root", "", "applogin");
 
-if($conexion){
-    echo "Conexión exitosa!";
-}else{
-    echo "No hay conexión";
-}
+// if($conexion){
+//     echo "Conexión exitosa!";
+// }else{
+//     echo "No hay conexión";
+// }
 
 ?>
