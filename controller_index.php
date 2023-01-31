@@ -1,4 +1,5 @@
 <?php
+include "conexion.php";
 
 session_start();
 
@@ -14,15 +15,26 @@ if(!empty($_POST["ingresar"])){
         $password = $_POST["password"];
         $consulta = $conexion -> query("SELECT * FROM user WHERE email ='$email' AND password ='$password'");
         if($datos=$consulta -> fetch_object()){
+            
             $_SESSION["id"] = $datos->id;
             $_SESSION["name"] = $datos->name;
-            $_SESSION["email"] = $datos->email;          
+            $_SESSION["email"] = $datos->email;
+            $_SESSION["password"] =$datos->password;         
             header("Location: profile.php");
+            // var_dump($_SESSION);
         }else{
-            echo '<div class="alert alert-danger">Acceso Denegado</div>';
+           header("refresh:1;url=index.php");
+           echo "<script>
+                alert('Acceso Denegado');
+            </script>";          
         }
     }else{
-        echo '<div class="alert alert-danger">Campos Vacios.</div>';
+        header("refresh:1;url=index.php");
+        echo "<script>
+                alert('Campos Vacios.');                
+            </script>";
+            
+        
     }
 	
 

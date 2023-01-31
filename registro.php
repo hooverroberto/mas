@@ -63,7 +63,7 @@ if(isset($_POST["registrar"])){
 
 			<div class="card p-5" style="width: 28rem;">
 				<h1>Register</h1>
-				<form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+				<form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST">
 
 					<div class="form-group mb-3">
 						<label></label>

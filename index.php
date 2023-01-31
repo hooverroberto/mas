@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="./style.css">
     <title>Login</title>
 </head>
@@ -19,10 +22,9 @@
                 <h4 >Join thousands of learners from around the world</h4>
                 <p class="text">Master web development by making real-life projects. There are multiple paths for you to choose</p>              
                 <?php
-                include "conexion.php";
-                include "./controller_index.php";
+                include "conexion.php";                
                 ?>
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="controller_index.php" method="POST" enctype="multipart/form-data">
                     <div class=" mt-3 mb-2">                    
                         <input type="email" class="form-control" placeholder="name@example.com" name="email">
                     </div>
